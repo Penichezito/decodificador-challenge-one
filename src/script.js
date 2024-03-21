@@ -1,51 +1,78 @@
-function encriptar() {
-    let encrypt = document.querySelector("btn-encrypt");
-    let = document.getElementById("titulo-mensaje");
-    let parrafo = document.getElementById("parrafo");
-    let muñeco = document.getElementById("muñeco");
-  
-    let textoCifrado = text
-      .replace(/e/gi, "enter")
-      .replace(/i/gi, "imes")
-      .replace(/a/gi, "ai")
-      .replace(/o/gi, "ober")
-      .replace(/u/gi, "ufat");
-  
-    if (texto.length != 0) {
-      document.getElementById("text-input").value = textoCifrado;
-      tituloMensaje.textContent = "Texto Criptografado com sucesso";
-      parrafo.textContent = "";
-      muñeco.src = "./img/encriptado.jpg";
-    } else {
-      muñeco.src = "./img/muñeco.png";
-      tituloMensaje.textContent = "Ningún mensaje fue encontrado";
-      parrafo.textContent = "Ingresa el texto que deseas encriptar o desencriptar";
-      swal("Ooops!", "Debes ingresar un texto", "warning");
-    }
+const buttonEncrypt = document.querySelector(".btn-encrypt");
+const buttonDecrypt = document.querySelector(".btn-decrypt");
+const textInput = document.querySelector(".box-text-area")
+const riddler = document.querySelector(".box-riddler");
+const h3 = document.querySelector(".h3-box");
+const paragraph = document.querySelector(".paragraph-box");
+const result = document.querySelector(".result-text");
+
+buttonEncrypt.onclick = encrypt;
+buttonDecrypt.onclick = decrypt;
+
+
+function encrypt() {
+  hiddenBox();
+  let area = recoverText();
+  result.textContent = encryptText(area);
+}
+
+function decrypt() {
+  hiddenBox();
+  let area = recoverText();
+  result.textContent = decryptText(area);
+}
+
+function recoverText() {
+  let area = document.querySelector(".box-text-area");
+  return area.value;
+}
+
+function hiddenBox() { 
+  riddler.classList.add("hidden");
+  h3.classList.add("hidden");
+  paragraph.classList.add("hidden");
+}
+
+function encryptText(text) { 
+  const keys = {
+    e: "enter",
+    i: "imes",
+    a: "ai",
+    o: "ober",
+    u: "ufat",
+  };
+
+  let encryptedText = "";
+  for (let i = 0; i < text.length; i++) {
+    const word = text[i]; 
+    encryptedText += keys.hasOwnProperty(word) ? keys[word] : word;
   }
-  
-  function desencriptar() {
-    let texto = document.getElementById("texto").value;
-    let tituloMensaje = document.getElementById("titulo-mensaje");
-    let parrafo = document.getElementById("parrafo");
-    let muñeco = document.getElementById("muñeco");
-  
-    let textoCifrado = texto
-      .replace(/enter/gi, "e")
-      .replace(/imes/gi, "i")
-      .replace(/ai/gi, "a")
-      .replace(/ober/gi, "o")
-      .replace(/ufat/gi, "u");
-    
-      if (texto.length != 0) {
-        document.getElementById("texto").value = textoCifrado;
-        tituloMensaje.textContent = "Texto descriptografado com êxito";
-        parrafo.textContent = "";
-        muñeco.src = "./img/desencriptado.jpg";
-      } else {
-        muñeco.src = "./img/muñeco.png";
-        tituloMensaje.textContent = "Ningún mensaje fue encontrado";
-        parrafo.textContent = "Ingresa el texto que deseas encriptar o desencriptar";
-        swal("Ooops!", "Debes ingresar un texto", "warning");
-      }
+
+  return encryptedText;
+}
+
+
+function decryptText(text) {
+  const keys = {
+    "enter": "e",
+    "imes": "i",
+    "ai": "a",
+    "ober": "o",
+    "ufat": "u",
+  };
+
+  let decryptedText = "";
+  for (let i = 0; i < text.length; i++) {
+    const word = text[i];
+    decryptedText += keys.hasOwnProperty(word) ? keys[word] : word;
   }
+
+  return decryptedText;
+}
+
+const btnCopy = document.querySelector(".btn-copy"); 
+    btnCopy.addEventListener("click", copiar = () => {
+    let content = document.querySelector(".text-result").textContent;
+    navigator.clipboard.writeText(content);
+    console.log("copied");
+    });
