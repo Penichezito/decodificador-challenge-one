@@ -11,43 +11,44 @@
     <header>
             <img class="logo" src="/assets/images/arda-logo.png" class="logo arda media">
     </header>
-
     <main>
-        <section class="section-input">
-             <div class="box-text-input">
-                <textarea placeholder="Digite seu texto aqui" class="box-text-input"></textarea>
-            </div>
-            <div class="alert">
+        <section class="section1">
+            <textarea class="box-text-area" placeholder="Digite seu texto aqui" ></textarea>
+            <div>
                 <img src="/assets/images/exclamacao.png" alt="alerta">
                 <p>Use somente letras minúsculas e sem acento</p> 
             </div>
             <div class="botons-section-input">
-                <button class="btn-encrypt" type="button" value="encrypt" onclick="encrypt()">Criptografar</button>
-                <button class="btn-decrypt" type="button" value="decrypt" onclick="decrypt()">Descriptografar</button>
+                <input class="btn-encrypt" type="button" value="Encriptar"></input>
+                <input class="btn-decrypt" type="button" value="Desencriptar" ></input>
             </div>
         </section>        
 
-        <section class="section-output">
-               <div class="riddler-box">
+        <section class="section2">
+               <div class="box-riddler">
                 <img src="/assets/images/charada-sem-fundo.png" alt="charada inimigo batman">
                </div>
-
-               <div class="paragraph">
+               
+               <div class="h3-box">
                 <h3>Sua Mensagem<br>aparecerá aqui</h3>
-                <p>Digite um texto que deseja criptografar ou descriptografar</p>
+               </div>
+
+               <div class="paragraph-box">
+               <p>Digite um texto que deseja criptografar ou descriptografar</p>
                </div>
 
                 <div class="botons-output">
                     <button type="button" class="btn-copy" value="Copy">Copiar</button>
                 </div>
-                <div class="result-text-box">
-                    <p class="result-text"></p>
+
+                <div class="result-text">
+                    <h3>Mensagem Criptografada</h3>
+                    <p></p>
                 </div>
-        </section>
+        </section>        
     </main>
     <footer>
         <p>Desenvolvido por Tiago Peniche</p>
-        <img src="/assets/images/arda-logo.png" class="footer-logo">
     </footer>
     <script src="/src/script.js"></script> 
 </body>
